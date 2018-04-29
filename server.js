@@ -69,7 +69,9 @@ app.listen(port,function() {
 // : able to make use of middleware to get request objects from get,post
 
 
-//to deploy to heroku
-//1. heroku create
+//to deploy to heroku (project must have git init and repo in github)
+//1. heroku create (name)
 //2.enter creditinals (if asked)
 //3.git push heroku master
+//4.heroku ps:scale web=1
+//5. heroku open // to open link
