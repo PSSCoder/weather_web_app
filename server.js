@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
+const { WebhookClient } = require('dialogflow-fulfillment');
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -32,7 +33,7 @@ app.post('/',function(req,res) {
 
     //send request to url and get response
     request(url,function(err,response,body){
-
+            console.log(body);
         if (err) { //error
             res.render('index',{weather:null,error:'Error, please try again.'});
             //weather and error are object which we can handle in our views
@@ -55,6 +56,14 @@ app.post('/',function(req,res) {
     });
 
 });
+
+// Testing for webhook
+app.get('/webhook',function(req,res) {
+    //res.send('Hello World');
+    console.log(req);
+});
+
+
 
 //listen to server on port 3000
 app.listen(port,function() {

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dialogflow-fulfillment": "^0.3.0-beta.2",
     "ejs": "^2.5.9",
     "express": "^4.16.3",
     "request": "^2.85.0"
