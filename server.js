@@ -60,8 +60,27 @@ app.post('/',function(req,res) {
 // Testing for webhook
 app.get('/webhook',function(req,res) {
     //res.send('Hello World');
-    console.log(req);
+    console.log("Testing webhook");
+    const agent = new WebhookClient({ req, res });
+  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
+  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
 });
+
+function welcome(agent) {
+    agent.add(`Welcome to my agent!`);
+  }
+
+  function fallback(agent) {
+    agent.add(`I didn't understand`);
+    agent.add(`I'm sorry, can you try again?`);
+  }
+
+  // Run the proper function handler based on the matched Dialogflow intent name
+  let intentMap = new Map();
+  intentMap.set('Default Welcome Intent', welcome);
+  intentMap.set('Default Fallback Intent', fallback);
+  // intentMap.set('your intent name here', yourFunctionHandler);
+  agent.handleRequest(intentMap);
 
 
 
