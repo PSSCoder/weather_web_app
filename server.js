@@ -61,8 +61,9 @@ app.post('/',function(req,res) {
 app.post('/webhook',function(req,res) {
     //res.send('Hello World');
     console.log("Testing webhook");
-  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
-  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+    console.log(req);
+//   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
+//   console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
 
   res.send({"fulfillmentText":"WEBHOOK WORKS"});
 });
