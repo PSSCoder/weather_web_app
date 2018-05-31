@@ -61,9 +61,10 @@ app.post('/',function(req,res) {
 app.post('/webhook',function(req,res) {
     //res.send('Hello World');
     console.log("Testing webhook");
-    const agent = new WebhookClient({ req, res });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+
+  res.send({"fulfillmentText":"WEBHOOK WORKS"});
 });
 
 
