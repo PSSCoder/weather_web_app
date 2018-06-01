@@ -58,8 +58,9 @@ app.post('/',function(req,res) {
 });
 
 
+var json_body_parser = body_parser.json();
 // Testing for webhook
-app.post('/webhook',function(req,res) {
+app.post('/webhook',json_body_parser,function(req,res) {
     
     console.log(req.body.queryResult.parameters['geo-city']);
     
