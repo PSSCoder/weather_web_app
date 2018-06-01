@@ -58,7 +58,7 @@ app.post('/',function(req,res) {
 });
 
 
-var json_body_parser = body_parser.json();
+var json_body_parser = bodyParser.json();
 // Testing for webhook
 app.post('/webhook',json_body_parser,function(req,res) {
     
