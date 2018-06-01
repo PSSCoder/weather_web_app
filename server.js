@@ -62,40 +62,41 @@ app.post('/',function(req,res) {
 app.post('/webhook',function(req,res) {
     
     // Get the city and date from the request
-  let city = req.body.queryResult.parameters['geo-city']; // city is a required param
-  console.log("City: " + city);
+    console.log(req.body.queryResult);
+//   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
+//   console.log("City: " + city);
 
-  // Get the date for the weather forecast (if present)
-  let date = '';
-  if (req.body.queryResult.parameters['date']) {
-    date = req.body.queryResult.parameters['date'];
-    console.log('Date: ' + date);
-  }
-  let url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+//   // Get the date for the weather forecast (if present)
+//   let date = '';
+//   if (req.body.queryResult.parameters['date']) {
+//     date = req.body.queryResult.parameters['date'];
+//     console.log('Date: ' + date);
+//   }
+//   let url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
-    //send request to url and get response
-    request(url,function(err,response,body){
-            console.log(body);
-        if (err) { //error
-            res.json({ 'fulfillmentText': "Sorry, Could you please try that again." }); // Return the results of the weather API to Dialogflow
-            //weather and error are object which we can handle in our views
-        }
-        else{
-            let weather = JSON.parse(body);//convert to JSON
+//     //send request to url and get response
+//     request(url,function(err,response,body){
+//             console.log(body);
+//         if (err) { //error
+//             res.json({ 'fulfillmentText': "Sorry, Could you please try that again." }); // Return the results of the weather API to Dialogflow
+//             //weather and error are object which we can handle in our views
+//         }
+//         else{
+//             let weather = JSON.parse(body);//convert to JSON
             
-            if(weather.main == undefined){ // if not a  country
-                res.json({ 'fulfillmentText': "Sorry, Could you please try that again." }); // Return the results of the 
-            }else
-            {
-                let message = `It's ${weather.main.temp} Degress Celsius in ${city}`;
-                console.log('message');
-                res.json({ 'fulfillmentText': message }); // Return the results of the 
-            }
+//             if(weather.main == undefined){ // if not a  country
+//                 res.json({ 'fulfillmentText': "Sorry, Could you please try that again." }); // Return the results of the 
+//             }else
+//             {
+//                 let message = `It's ${weather.main.temp} Degress Celsius in ${city}`;
+//                 console.log('message');
+//                 res.json({ 'fulfillmentText': message }); // Return the results of the 
+//             }
 
             
-        }
+//         }
         
-    });
+//     });
 
 
 
