@@ -61,7 +61,7 @@ app.post('/',function(req,res) {
 // Testing for webhook
 app.post('/webhook',function(req,res) {
     
-    console.log(JSON.stringify(req.body));
+    console.log(req.body.queryResult.parameters['geo-city']);
     
     // Get the city and date from the request
 //   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
