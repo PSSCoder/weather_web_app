@@ -61,8 +61,12 @@ app.post('/',function(req,res) {
 // Testing for webhook
 app.post('/webhook',function(req,res) {
     
+
+    console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
+  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+
     // Get the city and date from the request
-    console.log(req.body.queryResult);
+    console.log(JSON.stringify(request.body.queryResult));
 //   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
 //   console.log("City: " + city);
 
